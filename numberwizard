@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NumberWizard : MonoBehaviour
+{
+    int Minimum = 1;
+    int Maximum = 1000;
+    int guess = 500;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log("Welcome to Number Wizard, a Number Guessing game by Tate");
+        Debug.Log("Pick a Number and don't tell me");
+        Debug.Log("The largest number is " + Maximum);
+        Debug.Log("The Smallest Number is " + Minimum);
+        Debug.Log("Tell me if your number is higher or lower than " + guess);
+        Debug.Log("Press up if it's higher, press down if it's lower and if it is correct press enter");
+        Maximum = Maximum + 1;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Minimum = guess;
+            guess = (Maximum + Minimum) / 2;
+            Debug.Log("Is it higher or lower than " + guess);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Maximum = guess;
+            guess = (Maximum + Minimum) / 2;
+            Debug.Log("Is it higher or lower than " + guess);
+        }
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("So your number is " + guess);
+        }
+
+    }
+}
